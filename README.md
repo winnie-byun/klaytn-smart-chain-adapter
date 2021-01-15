@@ -1,13 +1,14 @@
-# Chainlink External Adapter for Binance Smart Chain
+# Chainlink External Adapter for Klaytn Smart Chain
 
-This adapter is built to fulfill Chainlink oracle requests.
+This adapter is built to fulfill Klaytn oracle requests.
 
-## Configuration
+## How to Run
 
-The adapter uses the following environment variables:
-
-- `URL`: A URL to a JSON-RPC (HTTP RPC) node on Binance Smart Chain
-- `PRIVATE_KEY`: The private key to sign transactions with. Must have fulfillment permissions on the Oracle contract.
+1. Go to https://baobab.wallet.klaytn.com/create for a new account.
+2. Set your key in `PRIVATE_KEY` in `server.sh` and store `keystore.json` in current directory.
+3. To depoly a contract, run  ` `.
+4. To run server, run `./server.sh`.
+5. To request `./request-getTime.sh` or `./request-setTime.sh`.
 
 ## Input Params
 

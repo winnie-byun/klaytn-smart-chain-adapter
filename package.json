@@ -1,14 +1,16 @@
 {
-  "name": "binance-smart-chain-adapter",
+  "name": "klaytn-smart-chain-adapter",
   "version": "0.1.0",
   "main": "index.js",
-  "repository": "https://github.com/smartcontractkit/binance-smart-chain-adapter.git",
-  "author": "Jonas Hals <jonas@smartcontract.com>",
+  "repository": "https://github.com/winnie-byun/klaytn-smart-chain-adapter.git",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "@chainlink/ea-bootstrap": "^0.0.1",
     "@chainlink/external-adapter": "^0.2.3",
-    "ethers": "^5.0.2",
+    "caver-js": "^1.5.5",
+    "fs": "0.0.1-security",
+    "solc": "^0.6.0",
     "web3": "^1.2.9"
   },
   "devDependencies": {

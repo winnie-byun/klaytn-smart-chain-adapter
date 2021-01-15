@@ -1,9 +1,13 @@
 const web3 = require('web3')
-const { ethers } = require('ethers')
+const Caver = require('caver-js')
 const { Requester, Validator } = require('@chainlink/external-adapter')
-const provider = new ethers.providers.JsonRpcProvider(process.env.URL)
+const caver = new Caver('https://api.baobab.klaytn.net:8651/')
+//   rpc  - http://localhost:8551/
+
 const privateKey = process.env.PRIVATE_KEY
-const wallet = new ethers.Wallet(privateKey, provider)
+keystore = fs.readFileSync('keystore.json', 'utf8')
+const keyring = caver.wallet.keyring.decrypt(keystore, privateKey)
+caver.wallet.add(keyring)
 
 const sendFulfillment = async (address, dataPrefix, functionSelector, value) => {
   const dataPrefixBz = web3.utils.hexToBytes(dataPrefix)
@@ -11,13 +15,16 @@ const sendFulfillment = async (address, dataPrefix, functionSelector, value) => 
   const valueBz = web3.utils.hexToBytes(value)
   const data = functionSelectorBz.concat(dataPrefixBz, valueBz)
 
-  const tx = {
+  let tx = new caver.transaction.legacyTransaction({
+    from: keyring.toAccount()._address,
     to: address,
-    data: web3.utils.bytesToHex(data)
-  }
+    input: web3.utils.bytesToHex(data),
+    gas: 1500000,
+  })
 
-  await wallet.signTransaction(tx)
-  return await wallet.sendTransaction(tx)
+  return caver.wallet.sign(keyring.address, tx)
+    .then(caver.rpc.klay.sendRawTransaction)
+    .then(console.log)
 }
 
 const customParams = {
