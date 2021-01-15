@@ -6,7 +6,7 @@ This adapter is built to fulfill Klaytn oracle requests.
 
 1. Go to https://baobab.wallet.klaytn.com/create for a new account.
 2. Set your key in `PRIVATE_KEY` in `server.sh` and store `keystore.json` in current directory.
-3. To depoly a contract, run  ` `.
+3. To depoly a contract, run  `cd caver_test && node index.js deploy`.
 4. To run server, run `./server.sh`.
 5. To request `./request-getTime.sh` or `./request-setTime.sh`.
 

@@ -1,8 +1,9 @@
 const web3 = require('web3')
-const Caver = require('caver-js')
 const { Requester, Validator } = require('@chainlink/external-adapter')
-const caver = new Caver('https://api.baobab.klaytn.net:8651/')
-//   rpc  - http://localhost:8551/
+const fs = require('fs')
+const Caver = require('caver-js')
+const caver = new Caver('https://api.baobab.klaytn.net:8651/') // http://localhost:8551/
+
 
 const privateKey = process.env.PRIVATE_KEY
 keystore = fs.readFileSync('keystore.json', 'utf8')
