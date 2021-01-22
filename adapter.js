@@ -23,9 +23,8 @@ const sendFulfillment = async (address, dataPrefix, functionSelector, value) => 
     gas: 1500000,
   })
 
-  return caver.wallet.sign(keyring.address, tx)
+  return await caver.wallet.sign(keyring.address, tx)
     .then(caver.rpc.klay.sendRawTransaction)
-    .then(console.log)
 }
 
 const customParams = {
@@ -47,8 +46,8 @@ const createRequest = (input, callback) => {
 
   const _handleResponse = tx => {
     const response = {
-      data: { result: tx.hash },
-      result: tx.hash,
+      data: { result: tx.transactionHash },
+      result: tx.transactionHash,
       status: 200
     }
     callback(response.status, Requester.success(jobRunID, response))
