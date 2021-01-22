@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@chainlink/ea-bootstrap": "^0.0.1",
-    "@chainlink/external-adapter": "^0.2.3",
+    "@chainlink/external-adapter": "0.2.3",
     "caver-js": "^1.5.5",
     "fs": "0.0.1-security",
     "solc": "^0.6.0",
